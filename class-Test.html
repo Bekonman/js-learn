@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 画三角形
+    // for(var i=0;i<5;i++){
+    //     for(var j=0;j<5-i-1;j++){
+    //         document.write("&nbsp;")
+    //     }
+    //     for(var k=0;k<2*i+1;k++){
+    //         document.write("*")
+    //     }
+    //     document.write("<br/>")
+    // }
+    //   //等腰三角形
+    //   var alt = "";
+    //     for(var i=1; i<=5; i++){
+    //         var blank = "";
+    //         for(var j=1; j<=5-i; j++){   //打印空格
+    //             blank += " ";
+    //         }
+    //         var stars = "";
+    //         for(var m=1; m<=2*i-1; m++){    //打印*
+    //             stars += "*";
+    //         }
+    //         alt += blank + stars + "\n";   //字符串的拼接,拼为一行
+    //     }
+    //     console.log(alt);
+    //     //循环
+    //     var sum = 0;
+    //     for(i=0;i<=100;i++){
+    //         if(i%2==0){
+    //          sum += i;
+    //         }
+    //     }
+    //     console.log(sum);
+
+
+        // 方法
+        function fun1(value){
+            document.write(value);
+        }
+        fun1(666);
+        document.write("<br/>")
+
+function trangle(num){
+        for(var i=0;i<num;i++){
+        for(var j=0;j<num-i-1;j++){
+            document.write("&nbsp;")
+        }
+        for(var k=0;k<2*i+1;k++){
+            document.write("*")
+        }
+        document.write("<br/>")
+    }
+}
+trangle(5);
+// 阶乘
+function factorial(number){
+    var sum = 1 ;
+    for(i=1;i<=number;i++){
+        sum *= i ;
+    }
+    document.write(number+"的阶乘为："+sum + "<br/>");
+}
+factorial(3);
+factorial(10);
+factorial(50);
+
+// 数组的反转
+var arry = [1,2,3,4,5,6,7,8,9,10];        //反转该数组
+for(var i = 0 ; i<arry.length/2 ; i++){   //首尾反转，确定次数
+    var temp = arry[i];                   //声明一个临时变量,将本次循环到的数组放进去
+    arry[i]= arry[arry.length-1-i];       //将与其对应位置的数列内容放到arry[i]中
+    arry[arry.length-1-i] = temp;
+}
+console.log(arry);  //输出反转后的结果
+
+function square(num){
+var total;
+total =num*num;
+return total;
+}
+var total = 50;
+alert(total);
+var number = square(20);
+alert(number);
+
+
+
+
+
+    </script>
+</body>
+</html>

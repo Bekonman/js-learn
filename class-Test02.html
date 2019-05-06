@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+        1.变量声明没有初始化，在返回值中返回的是undefined
+        2.如果一个函数没有明确的返回值，则接收到的函数值是undefined
+        3.函数调用时，会先将函数内会用到的变量在作用链中先声明，然后在函数执行过程中去搜寻这个变量的值，若没有搜寻到，则该值为undefined
+        */
+    console.log(
+        "-100绝对值：" + Math.abs(-100) + "\n" +
+        "4.5四舍五入：" + Math.round(4.5) + "\n" +
+        "4.5向上取整：" + Math.ceil(4.5) +"\n" +
+        "4.5向下取整：" + Math.floor(4.5) + "\n" +
+        "4的5次方：" + Math.pow(4,5) + "\n" +
+        "1-10的随机数" + Math.random()*10
+    );
+
+
+    // 用for循环弹出星期一到星期天,但不弹出今天的值
+    // 获取今天的值
+    var myDate = new Date();
+    var today = myDate.getDay();
+    console.log(today);
+    var week = new Array(
+        "星期天",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六"
+    )
+    for(var i=0 ; i<week.length; i++ ){
+        if(i==today){
+            continue;
+        }else{
+            console.log(week[i] + "\n");
+        }
+    }
+
+
+    </script>
+
+<!-- 数组内容拓展 -->
+    <script>
+        // 在数组尾部添加新内容
+    var arr = new Array(1,2);
+    console.log(arr);
+    var newArrLength = arr.push(3,4,'b');
+    console.log(arr);
+        // 在数组头部添加新内容，数组元素自动往后移动
+    var newArrLength = arr.unshift('a',0);
+    console.log(arr);
+    // 将一个或多个新元素插入到数组的指定位置，插入位置的元素自动后移，返回""。
+    // 其中splice(开始插入/删除的数组下标位置，要向后删除的元素个数，插入的值)
+    arr.splice(2,0,'突然加入');
+    console.log(arr);
+    // 删除数组元素,前面var声明的变量用于接收后面操作的值，即删除掉的那些值被赋予给了del_last，del_first，del_arr
+    // 删除last最后的元素
+    var del_last = arr.pop();
+    console.log(arr);
+    //删除first第一个元素
+    var del_first = arr.shift();
+    console.log(arr);
+    //删除任意位置数组元素
+    var del_arr = arr.splice(1,1);
+    console.log(arr);
+
+    // 数组的截取和合并
+    var a = [0,1,2,3];
+    var b = ['a','b','c'];
+    var c = ['啊','波','克','烈'];
+    // 数组的合并
+    var d = a.concat(b,c);
+    console.log(d);
+            
+    // 数组的截取注意，截取不会将原数组的内容删除
+    var merge_len = d.slice(0,4);
+    console.log(d);
+    console.log('截取的内容：' +merge_len);
+    var merge_len = d.slice(4);
+    console.log('截取的内容：' +merge_len);
+    // 注意：slice里面的end值()中的第二个空，可以是负数-1表示数组尾部第一个值,以此类推
+    var merge_len = d.slice(4,-2);
+    console.log('截取的内容：' +merge_len);
+    
+    //数组排序
+    var lists = [5,3,48,3,21,354,6,13,4,31,34,1,3,135];
+    var words = ['s','a','e','e','g','h','u'];
+    var mixs = [5,3,54,'a',8,'你好',32,'盘它',138,46,1,'e','w','l','k','j']
+    // 反元素排序
+    var res_sorts = lists.reverse();
+    console.log(lists);
+    console.log(res_sorts);
+    // 按照字母顺序  或者是按照数字大小进行排序
+    var num_arr = lists.sort();
+    var num_arr1 = words.sort();
+    var num_arr2 = mixs.sort();
+    //数字的排序貌似是以数字开头进行排序，1开头的排前面依次类推
+    console.log('数字的:'+lists);
+    console.log('字母的:'+words);
+    //混合排序是数字优先，然后到字母，最后到汉字
+    console.log('混合的:'+mixs);
+
+// ending
+
+    //数组元素转化为字符串 和 字符串转化为数组：
+    var arr4 = ['aa','bb',23,232,435,34];
+    //返回字符串，这个字符串将数组的每一个元素值连接在一起，中间用-隔开。
+    var str_arr = arr4.join("-");
+    console.log(str_arr);
+
+    //字符串转化为数组
+    var test = "asd,asd,asd,asd,fg,fgf";
+    var arrTest = test.split(",");  //转化为数组
+    console.log(arrTest);
+
+//ending
+    // 把第一次出现的o到最后一次出现的o之间的字符串截取出来
+    var str="Hello world, welcome to the universe.";
+    var beginning = str.indexOf('o');
+    var endinged = str.lastIndexOf('o');
+    // substr方法：sunstr(起始位置，长度)
+    var jiequ = str.substr(beginning,endinged);//所以这个方法无法达到上述要求
+    console.log(jiequ);
+    //substring方法：substring(起始位置,结束位置)
+    var jiequ = str.substring(beginning,endinged);
+    console.log(jiequ);
+
+
+    
+    
+    </script>
+</body>
+</html>

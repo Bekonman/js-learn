@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           // 1. 对数组中的数字进行大小排序
+    var arr = new Array(100,33,500,6,91);
+    document.write("初始数组排序："+arr);
+    //定义比较的轮数
+    for(var i = 0 ;i<arr.length-1;i++){
+        //定义每轮比较的次数
+        for(var j = 0 ; j<arr.length-1-i;j++){
+            // 比较j下标与它下一个数的大小，若比它小，则调换位置
+            if(arr[j]<arr[j+1]){
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+document.write("<br />"+"排序后数组位置："+arr +"<br />");
+
+//2. 自定义一个函数实现将一个字符串里面的大写字母变小写并且小写字母变大写。
+var str='aBcDeFg';
+var change = '';
+document.write("初始字符串："+str+"<br />");
+var s = ['a','w','e','r','t','y','u','i','o','p','q','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
+var b = ['A','W','E','R','T','Y','U','I','O','P','Q','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
+
+for(var i = 0 ;i<str.length;i++){
+    for(var x = 0 ;x<s.length;x++){
+        if(str[i] == s[x]){
+            // 利用字符串特殊的运算符效果，记住一定不要给change加下标，那样是没有效果的
+            change += b[x];
+            // console.log(change[i]);
+        }else if(str[i] == b[x]){
+            change += s[x];
+            // console.log(change[i]);
+        }
+    }
+}
+document.write("初始字符串："+ change +"<br />");
+// 3. 写一个函数，这个函数可以通过输入任意范围比如n到m来返回n到m的随机数
+var maxInt = prompt("请输入一个数字");
+var minInt = prompt("请输入另一个数字");
+
+if(!isNaN(maxInt)&&!isNaN(minInt)){
+    if(maxInt < minInt){
+        var temp = maxInt;
+        maxInt = minInt;
+        minInt = temp;
+        var rd = Math .floor(Math.random()*(maxInt-minInt+1)+minInt);
+        console.log(rd);
+        document.write("产生范围在" + minInt + "到" + maxInt + "的随机数：" + rd);
+        document.write("<br/>");
+    }
+
+}else{
+    alert("请输入数字！！！");   
+    document.write("请重新刷新，进行随机数生成测试，注意！要输入数字<br/>");
+    console.error("请重新刷新，进行随机数生成测试，注意！要输入数字");
+    
+}
+
+// 4. 定义一个字符串，将该字符串反转。比如：'var a = "abc" ' 反转为 "cba"
+var a = "abcdefgh";
+document.write("初始字符串：" + a + "<br />");
+document.write("直接反转字符串：" + a.split("").reverse().join("") + "<br />");
+function reverseStr(param){
+    var arr = param.split("");
+    var newArr = [];
+    for(i=0;i<arr.length;i++){
+        newArr[arr.length-i] = arr[i];
+    }
+    return newArr.join("");
+}
+document.write("方法反转字符串：" + reverseStr(a) + "<br />");
+
+
+        </script>
+</body>
+</html>

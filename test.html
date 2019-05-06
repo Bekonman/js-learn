@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 属性赋值时先使用函数里面的，如果没有，再去原型_proto_上面找，依次往上找,prototype是不具有继承功能的
+    // function Person(){
+    //     this.name = name;
+    // }
+    // var person = new Person();
+    // // 这个属性name将添加到它的原型上
+    // Person.prototype.name = "xiaohua";
+    // // person.name = "xiaoming";
+    // // console.log(person);
+    // // console.log(person.name);
+    // console.dir(person);
+    // console.dir(Person);
+    // console.dir(Object);
+    // console.log(Person());
+
+    function SuperType(){
+        this.color = ['red','blue','green'];
+    }
+    function SubType(){
+
+    }
+    //因为使用SubType的原型链去new的，所以SubType.prototype相当于SuperType的一个实例，这时SubType的原型中就有color属性了，并且这个属性是可以被继承的
+    //又因为instance1在push的时候，SubType中是没有color属性的，所以回到它的原型中去找到color属性，并且push"black"进去，这个时候SubType.prototype.color就变成了["red", "blue", "green", "black"]，这就解释了为什么instance2.color输出的结果是["red", "blue", "green", "black"]了
+    SubType.prototype = new SuperType();
+    var instance1 = new SubType();
+    instance1.color.push("black");           
+    console.log(instance1.color);               //["red", "blue", "green", "black"]
+    var instance2 = new SubType();
+    console.log(instance2.color);               //["red", "blue", "green", "black"]
+    
+
+    //根据上面我又做了一个测试，让instance3和4重复上面操作，不过这一次变成了SuperType的实例，这个时候instance3.color.push("black");是在SuperType中操作，因此不会发生继承，instance4中结果如下，没有"black"，以此来证明js对象继承是发生在它们的原型中，实际上是_proto_中
+    var instance3 = new SuperType();
+    instance3.color.push("black");
+    console.log(instance3.color);                //["red", "blue", "green", "black"]
+    var instance4 = new SuperType();
+    console.log(instance4.color);                //["red", "blue", "green"]
+
+
+    </script>
+</body>
+</html>

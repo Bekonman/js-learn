@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         search()：如果找到指定的子字符串，则返回其位置，如果找不到则返回-1
+//         match()：如果找到指定的内容，则返回查找的值；如果找不到则返回null
+//         replace()：如果找到指定的子字符串，则用新内容代替；如果找不到则原字符串不变.
+        // var str = 'This is a new world.2016-nine-01';
+        // var s1 = /new/.test(str);
+        // var s2 = /New/.test(str);
+        // console.log(s1);
+        // console.log(s2);
+        
+        // var s3 = /is/.exec(str);
+        // console.log(s3);
+        
+
+        // var str = '@_@ This is Ken speaking.By 2016-09-1d';
+        // console.log(str.match(/\d/)); //匹配一个数字
+        // document.write(str.match(/\d/g)) //以数组模式返回
+        // console.log(str.match(/\D/)); //匹配一个非数字
+        // console.log(/\s/.exec(str));  //匹配一个空白字符
+        // console.log(/is/.exec(str));  //匹配is,是This里面的is,下标位置为6
+        // console.log(/\bis/.exec(str)); //匹配有边界的is,是单词is,下标位置为9  
+        // console.log(str.match(/\d+/)); //匹配多个数字,返回是2016
+        // console.log(str.match(/A?/)); //匹配0个或1个字符A
+        // console.log(str.match(/i{2}/)); //匹配连续2个i,因为没有,返回null
+        // console.log(str.match(/\d{2,4}/g)); //匹配2-4个数字组成的字串,返回2016 09	
+        // // document.write(str.match(/\d{2,4}/g))
+        // console.log(str.match(/d$/));  //匹配以字符d结尾
+        // console.log(str.match(/^a/));  //匹配以字符a开头
+        // console.log(str.match(/e(c|a|n)/)); //匹配ec或ea或en
+        // console.log(str.match(/[0-9]/));//匹配0-9任意一个数字,等价于\d
+        // console.log(str.match(/ea(?=i|k)/));//匹配ea后面有i或k的字符串
+
+
+        // var str = '<u>123</u><u>Abcadae</u>';
+	    // console.log(str.match(/a/i));//不区分大小写
+	    // console.log(str.match(/a/ig));//全局不区分大小写匹配
+	    // console.log(str.match(/<u>.*<\/u>/));//贪婪模式匹配
+	    // console.log(str.match(/<u>.*?<\/u>/)); //加?符号，取消贪婪模式
+    
+    
+    </script>
+<!-- 原型&原型链 -->
+<script>
+// var person = function(name){
+//     this.name=name;
+// }
+var animal = function(){};
+var dog = function(){};
+
+animal.price = 2000;
+dog.prototype = animal;
+var tidy = new dog();
+
+// 请问dog.price和tidy.price分别是多少?即下面两条语句的分别输出什么？
+console.log(dog.price);        //undefined
+console.log(tidy.price);       //2000
+
+// 总结：
+// 1.因为tidy是属性，即普通对象，没有prototype，只有proto所以证明js中的继承发生在proto中而不是prototype（dog.price没有继承到animal.price的值）
+// 2.
+
+
+</script>
+
+
+
+</body>
+</html>

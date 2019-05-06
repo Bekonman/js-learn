@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+    // 闭包
+    var name = "The Window";   
+　　var object = {   
+　　　　name : "My Object",   
+　　　　getNameFunc : function(){   
+　　　　　　return function(){   
+　　　　　　　　return this.name;   
+　　　　　};   
+　　　　}   
+    };   
+    alert(object.getNameFunc()()); 
+    //this是在运行时才确定的，指向当前执行的上下文。
+    //object.getNameFunc()返回了一个匿名函数:function(),然后object.getNameFunc()()就表示调用匿名函数function
+    //在object.getNameFunc()调用的时候，这时的this就表示object当前的上下文，所以name的值为“My Object”，而object.getNameFunc()()则表示调用匿名函数，而这个匿名函数没有人调用，所以其上下文默认的就是windows，就返回windows
+    
+    
+    </script>
+
+    <!-- <script>
+        var i = 1;
+        // eval支持获取参数计算并返回值
+        eval("i=i+1");
+        // eval("alert(i);")
+
+        var url= "http://www.baidu.com/s?name=小米";
+        // 解析url，escape是UTF-8 ...unescape是反解析，间解析过后的内容还原，一般会将其反解析为GBK形式
+        url= escape(url);
+        document.write(url + "<br/>");
+        document.write(unescape(url));
+
+    </script> -->
+    <script>    
+        var myDate = new Date();
+        var mytime = myDate.toLocaleTimeString();
+        var mydate = myDate.toLocaleDateString();
+        console.log(mytime);
+        console.log(mydate);
+    
+    </script>
+
+</body>
+</html>
