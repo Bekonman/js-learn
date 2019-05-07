@@ -185,11 +185,15 @@
 
 	// 4. 从一个字符串中提取链接地址。	
 	var str_1 = '大家好，我是xxx... <a href="http://www.baidu.com">BaiduY夏</a>';
-    console.log(str_1.match(/href=".*"/));
+    // console.log(str_1.match(/href="(.*?)"/));
+    //利用零宽断言：(?<=\s)\d+(?=\s)匹配以空白符间隔的数字(再次强调，不包括这些空白符)。
+    console.log(str_1.match(/(?<=\bhref=")(.*?)(?=")/));
+
+    
 
 	// 5. 写一个正则表达式,匹配 "<option value="gz">"
 	var op ='<option value="gz">广州</option>';
-    console.log(/<option value="gz">/.exec(op));
+    console.log(/<option value="(.*?)">/.exec(op));
 
 	// 6. 判断字符串是否包含数字        
 		var str1 = 'abc9efh';

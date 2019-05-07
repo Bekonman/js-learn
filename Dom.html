@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <p id="p" class="p">下午好</p>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <form action="post" name="f1">
+        用户名: <input type="text" name="uname" value="" placeholder="请输入用户名">
+    </form>
+    <div class="red" id="red"></div>
+    <!-- 第三种，移动到元素行内,但是它会被第一种click方法覆盖 -->
+    <div class="green" id="green" conclick="console.log('发生在行内元素上的onclick')"></div>
+
+
+
+
+<!-- 事件 -->
+<script>
+    var red = document.getElementById("red");
+    var green = document.getElementById("green");
+    red.onclick = function(){
+        
+    }
+    red.onmousedown = function(){
+
+    }
+    red.onmouseup = function(){
+
+    }
+    red.onmousemove = function(){
+
+    }
+    red.onmouseout = function(){
+
+    }
+
+//事件的绑定方式：
+// 第一种：onclick写发若有多种，则后面的会覆盖前面的
+green.onclick = function(){
+    console.log('click')
+}
+green.onclick = function(){
+    console.log('click1')
+}
+// 第二种：addEventListener写多种，不会覆盖
+green.addEventListener('click',function(){
+    console.log('addEventListener')
+});
+green.addEventListener('click',function(){
+    console.log('addEventListener')
+});
+//第三种，移动到元素行内
+
+</script>    
+
+
+
+
+
+
+
+
+
+
+
+<!-- 间接引用节点 -->
+<script>    
+    // var p = document.childNodes[0];
+    // var p1 = document.childNodes[1];
+    // var p2 = document.childNodes[0][0];
+    // var p3 = document.childNodes[0][1];
+    // var p4 = document.childNodes[1][0];
+    // var p5 = document.childNodes[1][1];
+    // var p6 = document.childNodes[1][2];
+
+    // console.log(p)                  //<!DOCTYPE html>
+    // console.log(p1)                 //<html>...</html>
+    // console.log(p2)                 //undefined
+    // console.log(p3)                 //undefined
+    // console.log(p4)                 //undefined
+    // console.log(p5)                 //undefined
+    // console.log(p6)                 //undefined
+    //     // document.write(p1)
+</script>
+<!-- 直接引用节点 -->
+    <script>
+        // var p = document.querySelector("#p");
+        // var p1 = document.querySelector(".p");
+        // console.log(p)
+        // console.log(p1)
+        // // document.write(p1)
+
+        // //获取多个
+        // var all1 = document.querySelectorAll('ul li');
+        // console.log(all1);
+
+        // // 通过ID获取，得到的是单个
+        // var pId = document.getElementById("p");
+        // console.log("通过ID获取"+ pId)
+        // // 通过CLASS获取，得到的是数组
+        // var pClass = document.getElementsByClassName('p');
+        // console.log("通过CLASS获取"+ pClass)
+        // // 通过元素获取，得到的也是数组
+        // var tag = document.getElementsByTagName('li');
+        // console.log(tag);
+        // //通过Byname获取，得到也是数组
+        // var Bname = document.getElementsByName('f1');
+        // var Bname1 = document.getElementsByName('uname');
+        // console.log(Bname);
+        // console.log(Bname1);
+    </script>
+</body>
+</html>

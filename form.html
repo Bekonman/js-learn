@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Cassie"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+  <meta name="keywords" content=""/>
+  <title>Form</title>
+  <link rel="stylesheet" href="./css/form.css"/>
+  <!-- link bootstrap -->
+  <!-- 注意点，在导入bootstrapValidator进行表单验证的时候，最好把bootstrap和jQuery的包在前面就导入，这样有利于判断 -->
+  <link rel="stylesheet" href="./css/bootstrap.css"/>
+  <script src="./js/bootstrap.js"></script>
+  <script src="./jQuery/jquery.js"></script>
+   
+  <!-- link bootstrap-validator-->
+  <script src="./js/bootstrapValidator.min.js"></script>
+ </head>
+ <body>
+     <div class="container">
+        <div class="col-md-offset-2 col-md-7">
+            <h2>用户注册页面</h2>
+            <form action="myPhp.php" class="form-horizontal" id="myForm" method="post" >
+                <div class="form-group">
+                    <label for="myName" class="col-md-2 control-label">用户名：</label>
+                    <div class="col-md-6">
+                        <input type="username" class="form-control" id="myName" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="myPassword" class="col-md-2 control-label">密码：</label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="myPassword" name="password">
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label class="col-md-2 control-label">性别：</label>
+                    <div class="col-md-10" id="sexy">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio"  name="gender" id="myOption1"  data-bv-field="gender">
+                                男
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio"  name="gender" id="myOption2" required data-bv-field="gender">
+                                女
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">爱好：</label>
+                    <div class="col-md-10" id="habbit">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1" name="languages[]">听音乐
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2" name="languages[]">看电影
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="option3" name="languages[]" required>玩游戏
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">城市：</label>
+                    <div class="col-md-3" id="country">
+                        <select class="form-control degree" name="country" >
+                            <option value="">请选择</option>
+                            <option>北京</option>
+                            <option>上海</option>
+                            <option>广州</option>
+                        </select>
+                    </div>
+                </div>    
+                <div class="form-group">
+                    <label for="myFile" class="col-md-2 control-label">照片：</label>
+                    <div class="col-md-10">
+                        <input type="file" id="myFile" name="firstFile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="myFile" class="col-md-2 control-label">个人简介：</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" name="bio"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+     </div>
+  <script>
+     $(document).ready(function() {
+        $('#myForm').bootstrapValidator({
+            feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: '用户名无效',
+                    validators:{
+                        notEmpty: {
+                             message: '用户名不能为空'
+                        },
+                        stringLength: {
+                            min: 4,
+                            max: 10,
+                            message: '用户名长度为4-10个字符'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: '用户名仅限于数字、字母、下划线、点'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        },
+                        identical: {
+                            field: 'confirmPassword',
+                            message: 'The password and its confirm are not the same'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 10,
+                            message: '密码长度为6-10个字符'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: '密码仅限于数字、字母、下划线、点'
+                        }
+                    }
+                },
+                'languages[]':{
+                    validators: {
+                        notEmpty: {
+                            message: '未选择爱好'
+                        },
+                        choice:{
+                            min: 2,
+                            max: 3,
+                            message: '至少选择两个以上'
+                        }
+                    }
+                },
+                gender: {
+                    validators: {
+                        notEmpty: {
+                            message: '未选择性别'
+                        }
+                    }
+                },
+                country:{
+                    validators: {
+                        notEmpty: {
+                            message: '未选择城市'
+                        }
+                    }
+                },
+                firstFile: {
+                    validators: {
+                        notEmpty: {
+                            message: '未选择文件'
+                        },
+                        file: {
+                            extension: 'html',
+                            type: 'text/html',
+                            message: '请选择一个html格式文件'
+                        },
+                    }
+                },
+                bio :{
+                    validators: {
+                        notEmpty: {
+                            message : '请介绍你自己'
+                        },
+                        stringLength: {
+                            min: 20,
+                            max: 100,
+                            message: '个人介绍介于20-100数字'
+                        },
+                    }
+                }
+
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+            
+            $('#myForm').data('bootstrapValidator').disableSubmitButtons(false);
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                console.log(result);
+            }, 'json');
+
+            
+        });
+     });      
+  </script>
+ </body>
+ </html>

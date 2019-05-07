@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <!-- link bootstrap -->
+    <script src="jQuery/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- <script src="./js/bootstrap.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+
+    <!-- link bootstrap-validator-->
+    <script src="js/bootstrapValidator.min.js"></script>
+</head>
+<body onload="systemTime()" >
+    <input type="text" id="num1">
+    <select name="sel" id="sel">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" id="num2">
+    <input type="submit" id="submit" value="=" onclick="calculate()">
+    <input type="text" id="fruit" onclick="calculate()">
+    <div>
+        <a href="#" onClick="delayURL('http://wengdo.com',3000)">延迟跳转</a>
+    </div>
+    <!-- 动态时间方法：
+    方法一： -->
+    <div id="time" class="time"></div>
+    <!-- 方法二： -->
+    <!-- <div class="time1">
+        <span id="shi"></span>
+        <span id="fen"></span>
+        <span id="miao"></span>
+    </div> -->
+<hr>
+
+<!-- 表单
+<h2>用户注册页面</h2>
+<form action="myPhp.php" class="form-horizontal" method="post" id="myForm">
+    <div class="form-group">
+        <label for="InputText1" class="col-sm-2 control-label">用户名：</label>
+        <div class="col-sm-8">
+        <input type="username" class="form-control" id="InputText1" name="username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="InputPassword1" class="col-sm-2 control-label">密码：</label>
+        <div class="col-sm-8">
+        <input type="password" class="form-control" id="InputPassword1" name="password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inlineRadio1" class="col-sm-2 control-label">性别:</label>
+        <label class="radio-inline">
+        <input type="radio" name="gender" id="inlineRadio1" value="option1" data-bv-field="gender" checked> 男
+        </label>
+        <label class="radio-inline">
+        <input type="radio" name="gender" required id="inlineRadio2" value="option2"> 女
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="inlineRadio1" class="col-sm-2 control-label">爱好:</label>
+        <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1" name="hobby"> 听音乐
+        </label>
+        <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2" name="hobby"> 看电影
+        </label>
+        <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3" name="hobby"> 玩游戏
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="checkbox" class="col-sm-2 control-label">城市：</label>
+        style="width:auto"让select的option框不独占一行，并且自动适应选项内容宽度
+        <select class="col-sm-8 form-control" id="checkbox" style="width:auto" name="country">
+            <option value="0">北京</option>
+            <option value="1">上海</option>
+            <option value="2">广州</option>
+            <option value="3">南京</option>
+            <option value="4">武汉</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="photo" class="col-sm-2 control-label">图片：</label>
+        <input type="file" id="photo" name="photo">
+    </div>
+    <div class="form-group">
+        <label for="textarea" class="col-sm-2 control-label">个人简介：</label>
+        <textarea class="form-control" rows="5" style="width:50%" name="bio"></textarea>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+    </div>
+</form> -->
+
+    <script>
+// 1.使用字符串对象将字符串 “马小腾，马小腾”  马小腾替换成huge
+    var str1="马小腾，马小腾"
+    document.write(str1.replace(/马小腾/g,"huge"))
+
+// 2. 声明一个函数，用来识别当前页面所在的浏览器是什么浏览器。
+// 如果是IE6、IE7，那么就让当前页面跳转到 	http://www.baidu.com/s?wd=谷歌浏览器
+//     navigator.userAgent;
+//     console.log(navigator.userAgent)
+//     function browser(){
+//         if(navigator.userAgent.search(/Chrome/)!=-1){
+//             alert("你用的是谷歌浏览器");        
+//         }
+//         if(navigator.userAgent.search(/Firefox/)!=-1){
+//             alert("你用的是火狐浏览器");        
+//         }
+//         if(navigator.userAgent.search(/Trident\/7.0/)!=-1){
+//             alert("你用的是IE7.0");
+//             location.href= "http://www.baidu.com/s?wd=谷歌浏览器";
+//         }
+//         if(navigator.userAgent.search(/Trident\/6.0/)!=-1){
+//             alert("你用的是IE6.0");
+//             location.href= "http://www.baidu.com/s?wd=谷歌浏览器";
+//         }
+// }
+// browser();
+
+// 3. 声明一个函数，实现两个文本输入框内容的加减乘除运算。
+        function calculate(){
+            var num1 = parseInt(document.getElementById("num1").value);
+            // console.log(num1)
+            var num2 = parseInt(document.getElementById("num2").value);
+            // console.log(num2)
+            var selectSign = document.getElementById("sel").value;
+            // console.log(selectSign)
+            switch (selectSign){
+                case '+': 
+                    answer = num1+num2;
+                    break;
+                case '-': 
+                    answer = num1-num2;
+                    break;
+                case '*': 
+                    answer = num1*num2;
+                    break;
+                case '/': 
+                    answer = num1/num2;	
+                }
+                // console.log(answer);
+                // 在fruit上输出answer的值
+            document.getElementById("fruit").value = answer;
+        }
+// 方法二：
+        // var T1=window.setInterval(function(){
+        //     var shi=document.getElementById("shi");
+        //     var fen=document.getElementById("fen");
+        //     var miao=document.getElementById("miao");
+
+        //     var date=new Date();
+        //     var hour=date.getHours();
+        //     var minute=date.getMinutes();
+        //     var second=date.getSeconds();
+
+        //     shi.innerHTML=hour+":";
+        //     fen.innerHTML=minute+":";
+        //     miao.innerHTML=second;
+        //     if(hour<=9){
+        //         shi.innerHTML="0"+hour+":";
+        //     }
+        //     if(minute<10){
+        //         fen.innerHTML="0"+minute+":";
+        //     }
+        //     if(second<10){
+        //         miao.innerHTML="0"+second;
+        //     }
+        // },1000)
+
+// 4. 实现点击链接3秒后跳转到http://wengdo.com
+    function delayURL(url,time){
+        setTimeout("top.location.href = '" + url + "'",time);
+    }
+// 5. 声明一个函数，获取当前时间, 找两个项目，在头部输出动态的时钟
+    //获取系统时间，将时间以指定格式显示到页面。
+	function systemTime()
+	{
+		//获取系统时间。
+		var dateTime=new Date();
+		var hh=dateTime.getHours();
+		var mm=dateTime.getMinutes();
+		var ss=dateTime.getSeconds();
+		
+		//分秒时间是一位数字，在数字前补0。
+		mm = extra(mm);
+		ss = extra(ss);
+		
+		//将时间显示到ID为time的位置，时间格式形如：19:18:02
+		document.getElementById("time").innerHTML=hh+":"+mm+":"+ss;
+		
+		//每隔1000ms执行方法systemTime()。
+		setTimeout("systemTime()",1000);
+	}
+	
+	//补位函数。
+	function extra(x)
+	{
+		//如果传入数字小于10，数字前补一位0。
+		if(x < 10)
+		{
+			return "0" + x;
+		}
+		else
+		{
+			return x;
+		}
+	}
+
+// 6. 使用bootstrap写课件里面的表单，给表单做js单条和全部验证
+// $(document).ready(function() {
+//         $('#myForm').bootstrapValidator({
+//             feedbackIcons: {
+//             valid: 'glyphicon glyphicon-ok',
+//             invalid: 'glyphicon glyphicon-remove',
+//             validating: 'glyphicon glyphicon-refresh'
+//             },
+//             fields: {
+//                 username: {
+//                     message: '用户名无效',
+//                     validators:{
+//                         notEmpty: {
+//                              message: '用户名不能为空'
+//                         },
+//                         stringLength: {
+//                             min: 4,
+//                             max: 10,
+//                             message: '用户名长度为4-10个字符'
+//                         },
+//                         regexp: {
+//                             regexp: /^[a-zA-Z0-9_\.]+$/,
+//                             message: '用户名仅限于数字、字母、下划线、点'
+//                         }
+//                     }
+//                 },
+//                 password: {
+//                     validators: {
+//                         notEmpty: {
+//                             message: '密码不能为空'
+//                         },
+//                         identical: {
+//                             field: 'confirmPassword',
+//                             message: 'The password and its confirm are not the same'
+//                         },
+//                         stringLength: {
+//                             min: 6,
+//                             max: 10,
+//                             message: '密码长度为6-10个字符'
+//                         },
+//                         regexp: {
+//                             regexp: /^[a-zA-Z0-9_\.]+$/,
+//                             message: '密码仅限于数字、字母、下划线、点'
+//                         }
+//                     }
+//                 },
+//                 'hobby':{
+//                     validators: {
+//                         notEmpty: {
+//                             message: '未选择爱好'
+//                         },
+//                         choice:{
+//                             min: 2,
+//                             max: 3,
+//                             message: '至少选择两个以上'
+//                         }
+//                     }
+//                 },
+//                 gender: {
+//                     validators: {
+//                         notEmpty: {
+//                             message: '未选择性别'
+//                         }
+//                     }
+//                 },
+//                 country:{
+//                     validators: {
+//                         notEmpty: {
+//                             message: '未选择城市'
+//                         }
+//                     }
+//                 },
+//                 photo: {
+//                     validators: {
+//                         notEmpty: {
+//                             message: '未选择文件'
+//                         },
+//                         file: {
+//                             extension: 'html',
+//                             type: 'text/html',
+//                             message: '请选择一个html格式文件'
+//                         },
+//                     }
+//                 },
+//                 bio :{
+//                     validators: {
+//                         notEmpty: {
+//                             message : '请介绍你自己'
+//                         },
+//                         stringLength: {
+//                             min: 20,
+//                             max: 100,
+//                             message: '个人介绍介于20-100数字'
+//                         },
+//                     }
+//                 }
+
+//             }
+//         })
+//         .on('success.form.bv', function(e) {
+//             // Prevent form submission
+//             e.preventDefault();
+            
+//             $('#myForm').data('bootstrapValidator').disableSubmitButtons(false);
+//             // Get the form instance
+//             var $form = $(e.target);
+
+//             // Get the BootstrapValidator instance
+//             var bv = $form.data('bootstrapValidator');
+
+//             // Use Ajax to submit form data
+//             $.post($form.attr('action'), $form.serialize(), function(result) {
+//                 console.log(result);
+//             }, 'json');
+
+            
+//         });
+//      });      
+
+    </script>
+
+
+</body>
+</html>

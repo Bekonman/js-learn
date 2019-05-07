@@ -1,0 +1,21 @@
+// 该文件用于制定公共区域的属性值
+
+
+$half:50%;
+$minus-half:-50%;
+$all:100%;
+// list
+$Color:white black;
+$fontColor:white black #666666;
+$bg-Color:#2b80d9 #fbfaf7 #0079d7;
+$new-color:#ff6900;
+
+// 字体
+$fz-0:0px;
+
+
+@mixin font ($size:.14rem,$family:"Microsoft YaHei",$color:black){
+    font-size: $size;
+    font-family: $family;
+    color: $color;
+}

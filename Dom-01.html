@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form name="f1">
+        用户名： <input type="text" name="uname" id="uname">
+        密码 <input type="password" name="pwd" id="pwd">
+        <input type="submit" onclick="return validate()" value="提交">
+
+    </form>
+<!-- 表单验证 -->
+    <script>
+        //获取form元素
+        var form1 = document.forms["f1"];
+        var form2 = document.forms[0];
+        console.log(form1)
+        console.log(form2)
+        
+        //获取form表单中的元素
+        var ele = form1.elements;
+        console.log(ele);
+        
+        var uname = ele['uname'];
+        var pwd = ele['pwd'];
+        console.log(uname.value)
+        console.log(pwd.value)
+
+        // 验证
+        // 方法1：<input type="submit"onclick="return validate();" />
+        // 方法2：<form action=""onsubmit="return validate();" />
+        function validate(){
+            //判断用户名输入不为空
+            if(uname.value.length == 0){
+                alert("用户名不能为空!!!");
+                return false;
+            }
+            // 判断密码，第一：不能为空，第二：不能低于6位
+            if(pwd.value.length == 0){
+                alert("密码不能为空!!!");
+                return false;
+            }else if(!(/^[a-zA-Z][0-9a-zA-Z#$%&@_]{5,}/.test(pwd.value))){
+                alert("密码命名规则：以字母开头（区分大小写），长度不能少于6位!!!");
+                return false;
+            }
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+h2{
+  padding-bottom: 30px;
+  margin-bottom: 30px!important;
+  border-bottom: 1px solid olive;
+}
+textarea{
+  resize: none;
+}
+.form-horizontal .has-feedback #sexy .form-control-feedback,.form-horizontal .has-feedback #habbit .form-control-feedback{
+  right: -100%!important;
+}
+.has-feedback #country .form-control-feedback{
+  right: -10%!important;
+}
+@media screen and (max-width:990px){
+  .has-feedback #country .form-control-feedback{
+    right: 20px!important;
+  }
+}
