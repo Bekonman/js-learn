@@ -1,0 +1,33 @@
+<!DOCTYPE">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>第二题不断移动的div</title>
+  <style>
+  #box{
+    background:rgb(0,0,0);
+  }
+  </style>
+</head>
+<body>
+  <div id="box"style="width: 200px;height: 200px;"></div>
+</body>
+<script>
+function color(x,y,z){
+	var r=g=b=0;
+    setInterval(function(){
+    	if(r<256&&b<256&&g<256){
+    		box.style.background = "rgb(" + r + "," + g + "," + b + ")";
+	    	r+=x;
+	    	g+=y;
+	    	b+=z;
+    	}	
+    },100)
+}
+   
+   color(1,2,3);
+
+   
+	
+</script>
+</html>

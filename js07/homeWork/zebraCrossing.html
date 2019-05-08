@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斑马线</title>
+</head>
+<body>
+	
+	<ul id="news">
+		<li>人民日报头版头条：中国企业发展活力充沛</li>
+		<li>筑牢平安中国的铜墙铁壁 全国公安工作综述</li>
+		<li>革命圣地延安告别绝对贫困</li>
+		<li>手绘爱的记忆丨一张照片见证一份跨越68年的“团圆”</li>
+		<li>这组海报暗藏减税降费福利，快戳！</li>
+	</ul>
+
+	<ul>
+		<li>刘鹤将赴美意味着美会延迟加征关税？外交部回应</li>
+		<li>蔡英文要搞手机民调 岛内痛骂“耍赖输不起”	</li>
+		<li>细致分析俄客机事故细节:乘客拿行李耽误后排逃生</li>
+		<li>美国派出航母战斗群威慑伊朗 会“动武”吗？</li>
+		<li>俄将租赁远东百万公顷农业用地 一半租给中国人？</li>
+		<li>媒体：5G时代 到西方需向中国付专利费的时候了</li>
+	</ul>
+	<script type="text/javascript">
+		var lis = document.querySelectorAll('li')
+		console.log(lis)
+		for(var i = 0; i < lis.length; i++) {
+			// 设置动态斑马线
+			lis[i].onmouseover = function() {
+				this.style.backgroundColor = 'red'
+			}
+			lis[i].index = i // 设置当前li的属性index = i
+			lis[i].onmouseout = function() {
+				// 这里this.index 获取到上面赋值的 index = i 
+				if(this.index % 2 == 0) {
+					this.style.backgroundColor = 'pink'
+				}else {
+					this.style.backgroundColor = ''
+				}
+			}
+			// 设置静态斑马线
+			if(i % 2 == 0) {
+				lis[i].style.backgroundColor = 'pink'
+			}
+		}
+		// 扩展：设置class设置的属性值和获取class设置的属性值
+		
+	</script>
+</body>
+</html>

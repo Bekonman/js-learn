@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="news">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+    </ul>
+
+    <script>
+
+    var lis = news.querySelectorAll('li')
+    // console.log(lis)
+    for(var i = 0;i<lis.length;i++){
+        //设置动态斑马线
+        lis[i].onmouseover = function(){
+            // 这里要用this，若用lis[i]会报错
+            this.style.backgroundColor = 'red';
+        }
+        lis[i].index = i;   //设置当前的属性index的值.因为到下面if的时候i的值已经是5了
+        lis[i].onmouseout = function(){
+            // console.log(i)   //5
+            if(this.index % 2 == 0){
+                this.style.backgroundColor = 'pink';
+            }else{
+                this.style.backgroundColor = ''    
+            }
+        }
+
+        //设置静态斑马线
+        if(i % 2==0){
+            lis[i].style.backgroundColor = 'pink'
+        }
+    }
+
+
+    
+    
+    </script>
+</body>
+</html>

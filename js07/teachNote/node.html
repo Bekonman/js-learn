@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		 
+		<ul>
+			<li><a href="">item1</a></li>
+			<li class="curLi"><a href="" class="cur">item2</a></li>
+			<li><a href="">item3</a></li>
+			<li><a href="">item4</a></li>
+			<li><a href="">item5</a></li>
+		</ul>
+			
+		<p class="p1" data="jd-001-xiezi">下午好<a>广州</a></p>
+
+		<script type="text/javascript">
+			// 所有子节点
+			var nodes = document.childNodes
+			console.log(nodes)
+			var html = document.childNodes[1]
+			console.log(html)
+			
+			// 第一个子节点
+			var head = html.firstChild
+			console.log(head)
+
+			// 最后一个子节点
+			var body = html.lastChild
+			console.log(body)
+
+			var cur = document.querySelector('.cur')
+			// 父节点
+			var curLi = cur.parentNode;
+			console.log(curLi)
+
+			// 下一个元素
+			var nextSibling = curLi.nextSibling.nextSibling
+			console.log(nextSibling)
+
+			// 上一个元素
+			var preSibling = curLi.previousSibling.previousSibling
+			console.log(preSibling)
+
+			// 元素信息
+			
+			// 1. 元素节点
+			var p = document.querySelector('.p1')
+			console.log(p)
+			// 获取元素节点信息
+			console.log(p.nodeName)
+			console.log(p.nodeType)
+			console.log(p.nodeValue)
+			// 2. 属性节点
+			var pAttr = p.getAttributeNode('class')
+			// 获取属性节点信息
+			console.log(pAttr.nodeName)
+			console.log(pAttr.nodeType)
+			console.log(pAttr.nodeValue)
+			// 3. 文本节点
+			var pHtml = p.childNodes[0]
+			// 获取文本节点信息
+			console.log(pHtml.nodeName)
+			console.log(pHtml.nodeType)
+			console.log(pHtml.nodeValue)
+
+			// 获取元素属性
+			var productId = p.getAttribute('data')
+			console.log(productId)
+			// 设置元素属性
+			p.setAttribute('data', productId + '-test')
+
+			// html
+			var pHtml = p.innerHTML
+			console.log(pHtml)
+			p.innerHTML = '晚上好，<a>广州塔</a>'
+			var pText = p.textContent
+			console.log(pText)
+			p.textContent = '早上好，广州'
+
+			// 扩展：创建节点，添加节点，删除节点。（元素，属性，文本）
+		</script>
+	</body>
+</html>

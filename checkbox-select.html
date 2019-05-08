@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" name="selector" id="game">游戏
+    <input type="checkbox" name="selector" id="programmer">代码
+    <input type="checkbox" name="selector" id="movie">电影
+<br>
+    <input type="button" value="全选" id="selectAll">
+    <input type="button" value="取消" id="cancel">
+    <input type="button" value="反选" id="reverse">
+
+
+    <script>
+    var selectAll = document.querySelector("#selectAll")
+    var cancel = document.querySelector("#cancel")
+    var reverse = document.querySelector("#reverse")
+
+    // 全选
+    selectAll.onclick = function(){
+        var love = document.querySelectorAll('input[name="selector"]');
+        // console.log(love)
+        for(var i = 0 ;i<love.length;i++){
+            love[i].checked = "checked";
+        }
+    }
+
+    // 取消(全不选)
+    cancel.onclick = function(){
+        var love = document.querySelectorAll('input[name="selector"]');
+        // console.log(love)
+        for(var i = 0 ;i<love.length;i++){
+            love[i].checked = "";
+        }
+    }
+
+    //反选
+    reverse.onclick = function(){
+        var love = document.querySelectorAll('input[name="selector"]');
+        // console.log(love)
+        for(var i = 0 ;i<love.length;i++){
+            love[i].checked = !love[i].checked; //循环让love的状态与当前状态相反
+        }
+    }
+    
+    </script>
+</body>
+</html>

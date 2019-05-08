@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style> 
+        .tab , .content{
+            margin: 0 auto;
+            width: 300px;
+            display:block;
+        }
+        .tab li{
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            color: #333;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-right:none;
+            text-align: center;
+        }
+        .tab li:last-child{
+            border-right: 1px solid #000;
+        }
+        .tab::after{
+            content:'';
+            display: block;
+            clear: both;
+        }
+        .tab .cur{
+            background: orange;
+        }
+        .content li{
+            float: left;
+            display: none;
+            width: 300px;
+            height: 100px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            border-top:none;
+        }
+        .content li.cur{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul class="tab" id="tab">
+        <li class="cur">图片</li>
+        <li>专栏</li>
+        <li>热点</li>
+    </ul>
+    <ul class="content" id="content">
+        <li class="cur">图片内容</li>
+        <li>专栏内容</li>
+        <li>热点内容</li>
+    </ul>
+
+
+    <script>
+        var tabLi = document.querySelectorAll('#tab li');
+        var content = document.querySelectorAll('#content li');
+        for(var i = 0 ; i<tabLi.length; i++){
+            tabLi[i].index = i;
+            tabLi[i].onmouseover = function(){
+                //隐藏其他的元素
+                for(var j = 0 ; j < tabLi.length; j++){
+                    content[j].style.display = 'none';
+                    tabLi[j].className = '';
+                }
+                //让当前的显示
+                this.className = 'cur';
+                content[this.index].style.display = 'block'
+
+            }
+        }
+    </script>
+</body>
+</html>

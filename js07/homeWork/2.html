@@ -1,0 +1,24 @@
+<!DOCTYPE">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>第二题不断移动的div</title>
+</head>
+<body>
+  <div id="move" style="position: absolute; left:0px; top: 20px;width: 20px;height: 20px;background: red;"></div>
+
+
+  <script>
+  var move = document.getElementById("move");
+  // var left = move.sytle.left.value;
+  // console.log(left)
+  var i = 0;
+  function moving(){
+    i++;
+    move.style.left = i + 'px';
+  }
+  setInterval(moving,100);
+  
+  </script>
+</body>
+</html>

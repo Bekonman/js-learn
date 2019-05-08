@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>第一题不断变大的div</title>
+</head>
+<body>
+  <div id="change" class="change" style="width: 20px;height: 20px;background: red;"></div>
+
+
+  <script>
+  var change = document.getElementById('change');
+  // var change = document.querySelector("div");
+  var width = change.clientWidth || change.offsetWidth;
+  var height = change.clientHeight || change.offsetHeight;
+  // console.log(height)
+  // console.log(width)
+  var i = 0;
+  function changeBig(){
+    i++;
+    change.style.width = width + i + 'px';
+    change.style.height = height + i + 'px';
+  }
+  setInterval(changeBig, 100);
+  </script>
+</body>
+</html>

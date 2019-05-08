@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		ul {
+			list-style:none;
+		}
+		#tab , #content{
+			margin: 0 auto;
+			display: block;
+			width: 300px;
+			overflow: hidden;
+		}
+		#tab li{
+			float: left;
+			width: 98px;
+			height: 30px;
+			line-height: 30px;
+			color:  #333;
+			text-align: center;
+			border:1px solid red;
+			border-right:none;
+			cursor: pointer;
+		}
+		#tab li:last-child{
+			border-right:1px solid red;
+		}
+		#tab li.cur{ 
+			background: orange;
+		}
+		#content li{
+			display: none;
+			float: left;
+			width: 296px;
+			height: 100px;
+			min-height: 100px;
+			border:1px solid red;
+			border-top:none;
+		}
+		#content li.cur{
+			display: block;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul id="tab">
+		<li class="cur">图片</li>
+		<li>专栏</li>
+		<li>热点</li>
+	</ul>
+	<ul id="content">
+		<li class="cur">图片内容</li>
+		<li>专栏内容</li>
+		<li>热点内容</li>
+	</ul>
+
+	<script type="text/javascript">
+		var tabLi = document.querySelectorAll('#tab li')
+		var content = document.querySelectorAll('#content li')
+		var l = tabLi.length;
+		for(var i = 0; i < l; i++) {
+			tabLi[i].index = i
+			// tabLi[i].onclick = function() {
+			tabLi[i].onmouseover = function() {
+				// 先隐藏其他的元素
+				for(var j = 0; j < l; j++) {
+					content[j].style.display = 'none'
+					tabLi[j].className = ''
+				}
+				// 让当前的显示
+				this.className = 'cur'
+				content[this.index].style.display = 'block'
+			}
+		}
+
+	</script>
+</body>
+</html>

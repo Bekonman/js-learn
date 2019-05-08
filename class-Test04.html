@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a href="">item1</a></li>
+        <li class="curLi"><a href="" class="cur">item2<a></li>
+        <li><a href="">item3</a></li>
+        <li><a href="">item4</a></li>
+        <li><a href="">item5</a></li>
+    </ul>
+            
+    <p class="p1" data="jd-001-xiezi">下午好<a>广州</a><p>
+
+    <!-- 间接引用节点 -->
+<script>    
+// document只有两个子节点，一个是上面的声明，一个是html
+        var p = document.childNodes[0];            //<!DOCTYPE html>
+        console.log(p)                  //<!DOCTYPE html>
+        var html = document.childNodes[1];           //<html>...</html>
+        console.log(html)                 //<html>...</html>
+    // 这里是错误操作
+        // var p2 = document.childNodes[0][0];
+        // var p3 = document.childNodes[0][1];
+        // var p4 = document.childNodes[1][0];
+        // var p5 = document.childNodes[1][1];
+        // var p6 = document.childNodes[1][2];
+        // console.log(p2)                 //undefined  方法错误
+        // console.log(p3)                 //undefined  方法错误
+        // console.log(p4)                 //undefined  方法错误
+        // console.log(p5)                 //undefined  方法错误
+        // console.log(p6)                 //undefined  方法错误
+    // 获取html里面的子节点
+        var head = html.childNodes[0];
+        console.log(head)   //head
+        // 注意：两个不相连的元素之间会存在一个空白节点，他也要算进节点中
+        var text = html.childNodes[1];
+        console.log(text)   //#text
+        var body = html.childNodes[2];
+        console.log(body)   //body
+
+        //层级方式去追寻到head
+        var pp = document.childNodes[1].childNodes[0];
+        console.log(pp)     //head
+        //层级方式去追寻到head和body之间的空白节点
+        var pp1 = document.childNodes[1].childNodes[1];
+        console.log(pp1)     //#text
+        //层级方式去追寻到body
+        var pp2 = document.childNodes[1].childNodes[2];
+        console.log(pp2)     //body
+
+        //第一个子节点方式：
+        var head1 = html.firstChild
+        console.log(head1)   //head
+        //最后一个子节点方式：
+        var body1 = html.lastChild
+        console.log(body1)  //body
+
+
+        // 返回当前文档中第一个类名为"cur"的元素
+        var cur = document.querySelector('.cur');
+        //父节点
+        var curLi = cur.parentNode;
+        console.log(curLi);
+// ??
+        //下一个元素
+        var nextSibling = curLi.nextSibling.nextSibling
+        console.log(nextSibling)
+
+        //上一个元素
+        var previousSibling = curLi.previousSibling.previousSibling
+        console.log(previousSibling)
+// ??
+        //元素信息
+        //1.元素节点
+        var p = document.querySelector('.p1');
+        console.log(p)
+		// 获取元素节点信息
+		console.log(p.nodeName)
+		console.log(p.nodeType)
+		console.log(p.nodeValue)
+		// 2. 属性节点
+		var pAttr = p.getAttributeNode('class')
+		// 获取属性节点信息
+		console.log(pAttr.nodeName)
+		console.log(pAttr.nodeType)
+		console.log(pAttr.nodeValue)
+		// 3. 文本节点
+		var pHtml = p.childNodes[0]
+		// 获取文本节点信息
+		console.log(pHtml.nodeName)
+		console.log(pHtml.nodeType)
+		console.log(pHtml.nodeValue)
+		// 获取元素属性
+		var productId = p.getAttribute('data')
+		console.log(productId)
+		// 设置元素属性
+		p.setAttribute('data', productId +'-test')
+		// html
+		var pHtml = p.innerHTML
+		console.log(pHtml)
+		p.innerHTML = '晚上好，<a>广州塔</a>'
+		var pText = p.textContent
+		console.log(pText)
+		p.textContent = '早上好，广州'
+
+        //创建节点\添加节点、删除节点
+        
+
+
+
+    </script>
+    <!-- 直接引用节点 -->
+        <script>
+            // var p = document.querySelector("#p");
+            // var p1 = document.querySelector(".p");
+            // console.log(p)
+            // console.log(p1)
+            // // document.write(p1)
+    
+            // //获取多个
+            // var all1 = document.querySelectorAll('ul li');
+            // console.log(all1);
+    
+            // // 通过ID获取，得到的是单个
+            // var pId = document.getElementById("p");
+            // console.log("通过ID获取"+ pId)
+            // // 通过CLASS获取，得到的是数组
+            // var pClass = document.getElementsByClassName('p');
+            // console.log("通过CLASS获取"+ pClass)
+            // // 通过元素获取，得到的也是数组
+            // var tag = document.getElementsByTagName('li');
+            // console.log(tag);
+            // //通过Byname获取，得到也是数组
+            // var Bname = document.getElementsByName('f1');
+            // var Bname1 = document.getElementsByName('uname');
+            // console.log(Bname);
+            // console.log(Bname1);
+        </script>
+</body>
+</html>
